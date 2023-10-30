@@ -23,3 +23,7 @@
 .bg-default-gold{
   background-color: #F1BB1B;
 }
+
+.auth-screen{
+  height: calc(100vh - 56px);
+}
