@@ -6,7 +6,7 @@ import HttpsIcon from "@mui/icons-material/Https";
 const Auth = () => {
   return (
     <div className='w-full auth-screen bg-slate-100 flex items-center justify-center'>
-      <div className='w-3/6 rounded shadow grid grid-cols-1 md:grid-cols-5'>
+      <div className='md:w-3/6 rounded shadow grid grid-cols-1 md:grid-cols-5'>
         <div className='col-span-1 md:col-span-3 bg-default-green py-4 px-8'>
           <p className='text-slate-300'>Welcome to</p>
           <h2 className='w-32 font-semibold text-default-gold text-4xl mt-3'>
@@ -36,13 +36,15 @@ const Auth = () => {
           </div>
         </div>
         <form className='col-span-1 md:col-span-2 bg-white p-4'>
-          <h4 className='text-gray-500 uppercase py-1 text-sm'>Powered by:</h4>
+          <h4 className='text-gray-500 uppercase py-1 text-center md:text-start text-sm'>
+            Powered by:
+          </h4>
           <img
             src='/assets/images/moringa-logo.png'
             alt='logo'
-            className='h-12 mb-3'
+            className='h-12 mb-3 mx-auto'
           />
-          <p className='text-xs text-slate-400 pr-6'>
+          <p className='text-xs text-slate-400 pr-6 text-center md:text-start'>
             Sign in below if you have a registered account
           </p>
           <div className='w-full border rounded-full flex justify-center py-1 gap-3 mt-3'>
@@ -69,19 +71,19 @@ const Auth = () => {
               className='w-3/5 focus:outline-none text-sm'
             />
           </div>
-          <div className='flex justify-end items-center mt-3 gap-3'>
-            <div className='flex gap-1 text-xs text-gray-400 items-center'>
+          <div className='flex justify-between items-center mt-3 gap-3'>
+            <div className='flex gap-1 text-md md:text-xs text-gray-400 items-center'>
               <input type='checkbox' id='remember_me' />
               <label htmlFor='remember_me'>Remember me</label>
             </div>
             <h6 className='text-gray-400 text-xs'>Forgot password?</h6>
           </div>
           <div className='flex justify-center'>
-            <button className='bg-default-gold text-default-green text-md rounded-full w-40 py-1 mt-3'>
+            <button className='bg-default-gold text-default-green text-md rounded-full w-full md:w-40 py-1 mt-3'>
               Sign In
             </button>
           </div>
-          <p className='mt-3 text-center text-gray-400 text-xs'>
+          <p className='mt-3 text-center text-gray-400 text-md md:text-xs'>
             New here?{" "}
             <span className='text-default-green font-semibold'>
               Create Account
