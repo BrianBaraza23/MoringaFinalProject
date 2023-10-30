@@ -1,12 +1,10 @@
 import React from "react";
-import Register from "../components/Register";
-import Login from "../components/Login";
+import Auth from "../components/Auth";
 
 const AuthPage = () => {
   return (
     <>
-      <Register />
-      <Login />
+      <Auth />
     </>
   );
 };

@@ -7,3 +7,19 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.text-default-green{
+  color: #013A2F;
+}
+
+.text-default-gold{
+  color: #F1BB1B;
+}
+
+.bg-default-green{
+  background-color: #013A2F;
+}
+
+.bg-default-gold{
+  background-color: #F1BB1B;
+}
