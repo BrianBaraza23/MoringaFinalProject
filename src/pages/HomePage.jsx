@@ -4,6 +4,7 @@ import ArticleCard from "../components/ArticleCard";
 import Header from "../components/Header";
 import FeaturedView from "../components/FeaturedView";
 import NewPostSection from "../components/NewPostSection";
+import TrendingMedia from "../components/TrendingMedia";
 
 const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage = () => {
       <Header />
       <FeaturedView />
       <NewPostSection />
+      <TrendingMedia />
     </>
   );
 };
