@@ -4,7 +4,7 @@ const FeaturedView = () => {
   return (
     <div className='bg-default-green grid grid-cols-2'>
       <div className='col-span-1'>
-        <img src='/assets/images/image-2.jpeg' alt='featured article' />
+        <img src='/assets/images/moringa-bg.jpeg' alt='featured article' />
       </div>
       <div className='col-span-1 flex flex-col p-12 relative'>
         <h6 className='text-default-gold text-xl uppercase italic'>

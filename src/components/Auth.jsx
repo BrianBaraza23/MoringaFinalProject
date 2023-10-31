@@ -5,7 +5,14 @@ import HttpsIcon from "@mui/icons-material/Https";
 
 const Auth = () => {
   return (
-    <div className='w-full auth-screen bg-slate-100 flex items-center justify-center'>
+    <div
+      style={{
+        backgroundImage: `url('/assets/images/moringa-bg.jpeg')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      className='w-full auth-screen bg-slate-100 flex items-center justify-center'
+    >
       <div className='md:w-3/6 rounded shadow grid grid-cols-1 md:grid-cols-5'>
         <div className='col-span-1 md:col-span-3 bg-default-green py-4 px-8'>
           <p className='text-slate-300'>Welcome to</p>
