@@ -37,3 +37,25 @@
   top: -5px;
   right: -10px;
 }
+
+/* Radio buttons */
+input[type="radio"]:checked {
+  border-color: #F1BB1B;
+  /* Change border color to blue when checked */
+}
+
+input[type="radio"]:checked::before {
+  content: "";
+  /* This is used to create the dot inside the radio button */
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #F1BB1B;
+  /* Color of the dot when radio input is checked */
+  border-radius: 50%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Radio buttons */
