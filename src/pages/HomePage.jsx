@@ -6,6 +6,7 @@ import FeaturedView from "../components/FeaturedView";
 import NewPostSection from "../components/NewPostSection";
 import TrendingMedia from "../components/TrendingMedia";
 import VideoSlider from "../components/VideoSlider";
+import ArticlesSection from "../components/ArticlesSection";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
       <NewPostSection />
       <TrendingMedia />
       <VideoSlider />
+      <ArticlesSection />
     </>
   );
 };
