@@ -27,3 +27,13 @@
 .auth-screen{
   height: calc(100vh - 56px);
 }
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.notification-badge{
+  top: -5px;
+  right: -10px;
+}

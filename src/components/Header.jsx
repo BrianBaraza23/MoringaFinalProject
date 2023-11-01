@@ -5,7 +5,7 @@ import HttpsIcon from "@mui/icons-material/Https";
 
 const Header = () => {
   return (
-    <div className='bg-default-gold flex justify-between py-4 md:px-12'>
+    <div className='bg-default-gold flex justify-between py-2 md:px-12 border-bottom'>
       <div className='flex gap-2 items-center'>
         <h2 className='text-default-green font-bold text-2xl my-auto'>MSD</h2>
         <h6 className='text-white my-auto font-semibold'>
