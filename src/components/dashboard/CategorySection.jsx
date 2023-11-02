@@ -14,7 +14,7 @@ const CategorySection = () => {
         see on your homepage. You can change your selected categories by ticking
         the checkboxes below, and don't forget to save your changes.
       </p>
-      <div className='grid grid-cols-1 md:grid-cols-3'>
+      <div className='grid grid-cols-1 md:grid-cols-3 categories'>
         <div className='col-span-1 flex gap-2 m-2'>
           <input type='radio' className='w-5 h-5 focus:ring-blue-500' />
           <h6 className='my-auto text-gray-600 text-md'>

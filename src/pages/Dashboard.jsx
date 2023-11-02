@@ -5,6 +5,7 @@ import ProfileSection from "../components/dashboard/ProfileSection";
 import CategorySection from "../components/dashboard/CategorySection";
 import UsersList from "../components/dashboard/UsersList";
 import CreateCategory from "../components/dashboard/CreateCategory";
+import CreatePost from "../components/dashboard/CreatePost";
 
 const Dashboard = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -20,6 +21,7 @@ const Dashboard = () => {
               <CategorySection />
               <UsersList />
               <CreateCategory />
+              <CreatePost />
             </div>
           </main>
         </div>

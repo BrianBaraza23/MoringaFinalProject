@@ -39,12 +39,12 @@
 }
 
 /* Radio buttons */
-input[type="radio"]:checked {
+.categories input[type="radio"]:checked {
   border-color: #F1BB1B;
   /* Change border color to blue when checked */
 }
 
-input[type="radio"]:checked::before {
+.categories input[type="radio"]:checked::before {
   content: "";
   /* This is used to create the dot inside the radio button */
   display: block;
@@ -57,5 +57,14 @@ input[type="radio"]:checked::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.content-type input[type="radio"]:checked {
+  border-color: #F1BB1B;
+  /* Change border color to blue when checked */
+}
+
+.content-type input[type="radio"]:checked::before {
+    background-color: #F1BB1B;
 }
 /* Radio buttons */
