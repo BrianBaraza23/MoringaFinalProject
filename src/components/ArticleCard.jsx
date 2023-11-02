@@ -2,7 +2,7 @@ import React from "react";
 import StarIcon from "@mui/icons-material/Star";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 
-const ArticleCard = ({ is_new_article }) => {
+const ArticleCard = ({ is_new_article, is_wishlist }) => {
   return (
     <div className='card  border'>
       <img
@@ -32,7 +32,7 @@ const ArticleCard = ({ is_new_article }) => {
         <h6 className='py-3 text-default-gold text-md cursor-pointer'>
           Read More
         </h6>
-        {is_new_article ? (
+        {!is_wishlist && is_new_article ? (
           <div className='flex gap-4 justify-end'>
             <div className='flex gap-1 items-center text-default-green'>
               <i className='fa fa-check-circle-o' aria-hidden='true'></i>
@@ -44,12 +44,40 @@ const ArticleCard = ({ is_new_article }) => {
             </div>
           </div>
         ) : (
-          <div className='flex text-default-gold justify-end'>
-            <StarIcon style={{ fontSize: "20px" }} />
-            <StarIcon style={{ fontSize: "20px" }} />
-            <StarIcon style={{ fontSize: "20px" }} />
-            <StarIcon style={{ fontSize: "20px" }} className='text-slate-200' />
-            <StarIcon style={{ fontSize: "20px" }} className='text-slate-200' />
+          !is_wishlist && (
+            <div className='flex text-default-gold justify-end'>
+              <StarIcon style={{ fontSize: "20px" }} />
+              <StarIcon style={{ fontSize: "20px" }} />
+              <StarIcon style={{ fontSize: "20px" }} />
+              <StarIcon
+                style={{ fontSize: "20px" }}
+                className='text-slate-200'
+              />
+              <StarIcon
+                style={{ fontSize: "20px" }}
+                className='text-slate-200'
+              />
+            </div>
+          )
+        )}
+        {is_wishlist && (
+          <div className='flex justify-between'>
+            <h6 className='text-red-400 uppercase my-auto text-sm cursor-pointer'>
+              Remove from list
+            </h6>
+            <div className='flex text-default-gold justify-end'>
+              <StarIcon style={{ fontSize: "20px" }} />
+              <StarIcon style={{ fontSize: "20px" }} />
+              <StarIcon style={{ fontSize: "20px" }} />
+              <StarIcon
+                style={{ fontSize: "20px" }}
+                className='text-slate-200'
+              />
+              <StarIcon
+                style={{ fontSize: "20px" }}
+                className='text-slate-200'
+              />
+            </div>
           </div>
         )}
       </div>

@@ -7,6 +7,7 @@ import UsersList from "../components/dashboard/UsersList";
 import CreateCategory from "../components/dashboard/CreateCategory";
 import CreatePost from "../components/dashboard/CreatePost";
 import NewArticles from "../components/dashboard/NewArticles";
+import WishList from "../components/dashboard/WishList";
 
 const Dashboard = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -24,6 +25,7 @@ const Dashboard = () => {
               <CreateCategory />
               <CreatePost />
               <NewArticles />
+              <WishList />
             </div>
           </main>
         </div>
