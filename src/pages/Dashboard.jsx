@@ -8,6 +8,7 @@ import CreateCategory from "../components/dashboard/CreateCategory";
 import CreatePost from "../components/dashboard/CreatePost";
 import NewArticles from "../components/dashboard/NewArticles";
 import WishList from "../components/dashboard/WishList";
+import Footer from "../components/dashboard/Footer";
 
 const Dashboard = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -30,6 +31,7 @@ const Dashboard = () => {
           </main>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
