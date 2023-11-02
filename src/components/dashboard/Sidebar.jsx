@@ -5,7 +5,7 @@ const Sidebar = ({ isCollapsed }) => {
     <aside
       className={`bg-default-green ${
         isCollapsed ? "w-16" : "w-48"
-      } z-40 md:z-0 h-screen overflow-y-scroll scrollbar-hide left-0 top-0 transition-all duration-300 ease-in-out`}
+      } z-40 md:z-0 h-screen overflow-y-scroll scrollbar-hide left-0 top-14 transition-all duration-300 ease-in-out`}
     >
       <div className='flex flex-col items-center'>
         {isCollapsed ? (
