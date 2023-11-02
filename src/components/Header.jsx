@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import StarIcon from "@mui/icons-material/Star";
 import HttpsIcon from "@mui/icons-material/Https";
@@ -13,9 +14,11 @@ const Header = () => {
         </h6>
       </div>
       <ul className='text-default-green flex gap-3'>
-        <li className='flex gap-1 items-center'>
-          <PersonIcon style={{ fontSize: "22px" }} />
-          <h6 className='my-auto text-sm font-semibold'>Dashboard</h6>
+        <li>
+          <Link to='/dashboard' className='flex gap-1 items-center'>
+            <PersonIcon style={{ fontSize: "22px" }} />
+            <h6 className='my-auto text-sm font-semibold'>Dashboard</h6>
+          </Link>
         </li>
         <li className='flex gap-1 items-center'>
           <StarIcon style={{ fontSize: "22px" }} />

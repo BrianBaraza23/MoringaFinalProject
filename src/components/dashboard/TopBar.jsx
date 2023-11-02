@@ -19,11 +19,13 @@ const TopBar = ({ isCollapsed, setIsCollapsed }) => {
               0
             </span>
           </div>
-          <i
-            className='fa fa-bars text-xl text-default-green cursor-pointer'
-            aria-hidden='true'
-            onClick={toggleSidebar}
-          ></i>
+          <div className='bg-yellow-200 w-6 h-6 rounded-sm flex justify-center items-center'>
+            <i
+              className='fa fa-bars text-md text-default-green cursor-pointer'
+              aria-hidden='true'
+              onClick={toggleSidebar}
+            ></i>
+          </div>
         </div>
       </div>
     </header>
