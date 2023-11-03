@@ -38,9 +38,38 @@ const Article = () => {
       </div>
       <div className='grid grid-cols-1 md:grid-cols-3'>
         <div className='col-span-1 md:col-span-2 p-8'>
-          <h3 className='text-default-green font-semibold text-3xl'>
+          <h3 className='text-default-green font-semibold text-xl md:text-3xl'>
             How to get rid of your tech junk?
           </h3>
+          <div className='mt-2 d-md-none'>
+            <div className='flex justify-between text-slate-300 text-md'>
+              <div className='flex gap-1 items-center'>
+                <AccountCircleOutlinedIcon style={{ fontSize: "24px" }} />
+                <h6 className='my-auto'>John Doe</h6>
+              </div>
+              <div className='flex gap-1 items-center'>
+                <i
+                  className='fa fa-clock-o'
+                  aria-hidden='true'
+                  style={{ fontSize: "18px" }}
+                ></i>
+                <h6 className='my-auto'>1st Nov 2023</h6>
+              </div>
+            </div>
+            <div className='flex text-default-gold my-3'>
+              <StarIcon style={{ fontSize: "26px" }} />
+              <StarIcon style={{ fontSize: "26px" }} />
+              <StarIcon style={{ fontSize: "26px" }} />
+              <StarIcon
+                style={{ fontSize: "26px" }}
+                className='text-slate-200'
+              />
+              <StarIcon
+                style={{ fontSize: "26px" }}
+                className='text-slate-200'
+              />
+            </div>
+          </div>
           <p className='text-gray-700 py-3 text-md'>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae,
             aliquid eaque. Reiciendis exercitationem quo, non numquam impedit
@@ -118,28 +147,36 @@ const Article = () => {
           </div>
         </div>
         <div className='col-span-1 bg-white px-8 pt-8 md:pr-8 mb-3'>
-          <div className='flex justify-between text-slate-300 text-md'>
-            <div className='flex gap-1 items-center'>
-              <AccountCircleOutlinedIcon style={{ fontSize: "24px" }} />
-              <h6 className='my-auto'>John Doe</h6>
+          <div className='d-none d-md-block'>
+            <div className='flex justify-between text-slate-300 text-md'>
+              <div className='flex gap-1 items-center'>
+                <AccountCircleOutlinedIcon style={{ fontSize: "24px" }} />
+                <h6 className='my-auto'>John Doe</h6>
+              </div>
+              <div className='flex gap-1 items-center'>
+                <i
+                  className='fa fa-clock-o'
+                  aria-hidden='true'
+                  style={{ fontSize: "18px" }}
+                ></i>
+                <h6 className='my-auto'>1st Nov 2023</h6>
+              </div>
             </div>
-            <div className='flex gap-1 items-center'>
-              <i
-                className='fa fa-clock-o'
-                aria-hidden='true'
-                style={{ fontSize: "18px" }}
-              ></i>
-              <h6 className='my-auto'>1st Nov 2023</h6>
+            <div className='flex text-default-gold my-3'>
+              <StarIcon style={{ fontSize: "26px" }} />
+              <StarIcon style={{ fontSize: "26px" }} />
+              <StarIcon style={{ fontSize: "26px" }} />
+              <StarIcon
+                style={{ fontSize: "26px" }}
+                className='text-slate-200'
+              />
+              <StarIcon
+                style={{ fontSize: "26px" }}
+                className='text-slate-200'
+              />
             </div>
           </div>
-          <div className='flex text-default-gold my-3'>
-            <StarIcon style={{ fontSize: "26px" }} />
-            <StarIcon style={{ fontSize: "26px" }} />
-            <StarIcon style={{ fontSize: "26px" }} />
-            <StarIcon style={{ fontSize: "26px" }} className='text-slate-200' />
-            <StarIcon style={{ fontSize: "26px" }} className='text-slate-200' />
-          </div>
-          <div className='border border-amber-400 border-2 px-8 mt-5 py-3'>
+          <div className='border border-amber-400 border-2 px-8 md:mt-5 py-3'>
             <h6 className='text-amber-400 text-md mb-1'>
               Administrator Controls
             </h6>

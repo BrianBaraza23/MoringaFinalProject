@@ -8,13 +8,13 @@ const Header = () => {
   return (
     <div className='bg-default-gold flex flex-wrap items-center md:justify-between py-2 px-4 md:px-12 border-bottom'>
       <div className='w-full md:w-auto flex gap-2 items-center justify-between md:justify-start'>
-        <div className='flex items-center gap-1'>
+        <Link to='/' className='flex items-center gap-1'>
           <i
             className='fa fa-bullhorn text-default-green text-3xl md:text-4xl'
             aria-hidden='true'
           ></i>
           <h2 className='text-default-green font-bold text-4xl my-auto'>MSD</h2>
-        </div>
+        </Link>
         <h6 className='text-white my-auto font-semibold'>
           Keeping you a click ahead
         </h6>

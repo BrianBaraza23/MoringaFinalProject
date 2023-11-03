@@ -1,6 +1,7 @@
 import React from "react";
 import StarIcon from "@mui/icons-material/Star";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { Link } from "react-router-dom";
 
 const ArticleCard = ({ is_new_article, is_wishlist }) => {
   return (
@@ -34,9 +35,9 @@ const ArticleCard = ({ is_new_article, is_wishlist }) => {
           quisquam nostrum repellendus magnam alias sunt illum possimus corrupti
           laudantium dolore officia.
         </p>
-        <h6 className='py-3 text-default-gold text-md cursor-pointer'>
-          Read More
-        </h6>
+        <Link to='/articles/1' className='py-3 text-default-gold'>
+          <h6 className='text-lg'>Read More</h6>
+        </Link>
         {!is_wishlist && is_new_article ? (
           <div className='flex gap-4 justify-end'>
             <div className='flex gap-1 items-center text-default-green'>
