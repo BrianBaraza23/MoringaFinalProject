@@ -11,7 +11,7 @@ import WishList from "../components/dashboard/WishList";
 import Footer from "../components/dashboard/Footer";
 
 const Dashboard = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   return (
     <div>
       <div className='flex h-screen overflow-hidden'>
