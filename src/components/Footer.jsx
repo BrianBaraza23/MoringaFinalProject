@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className='bg-gray-800 py-4 px-8 md:px-12 text-white flex justify-between'>
+    <footer className='bg-gray-800 py-4 px-8 md:px-12 text-white flex flex-wrap md:justify-between items-center gap-8 md:gap-0'>
       <div>
         <h5 className='text-amber-400'>Feel free to email us at:</h5>
         <a href='mailto://' className='hover:underline'>
