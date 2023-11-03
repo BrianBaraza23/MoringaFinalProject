@@ -117,7 +117,7 @@ const Article = () => {
             </button>
           </div>
         </div>
-        <div className='col-span-1 bg-white px-8 pt-8 md:pr-8'>
+        <div className='col-span-1 bg-white px-8 pt-8 md:pr-8 mb-3'>
           <div className='flex justify-between text-slate-300 text-md'>
             <div className='flex gap-1 items-center'>
               <AccountCircleOutlinedIcon style={{ fontSize: "24px" }} />
