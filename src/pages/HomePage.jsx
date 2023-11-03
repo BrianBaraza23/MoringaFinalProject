@@ -16,7 +16,7 @@ const HomePage = () => {
       <NewPostSection />
       <TrendingMedia />
       <VideoSlider />
-      <ArticlesSection />
+      <ArticlesSection section_color='bg-white' />
     </>
   );
 };
