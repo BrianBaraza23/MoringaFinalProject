@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import StarIcon from "@mui/icons-material/Star";
 import HttpsIcon from "@mui/icons-material/Https";
 
 const Header = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     window.addEventListener("scroll", function () {
       const activeHeader = document.querySelector("#header");
@@ -17,6 +18,10 @@ const Header = () => {
       window.removeEventListener("scroll", function () {});
     };
   }, []);
+
+  const handleLogout = () => {
+    navigate("/auth");
+  };
   return (
     <div
       className='bg-default-gold flex flex-wrap items-center md:justify-between py-2 px-4 md:px-12 border-bottom'
@@ -45,7 +50,10 @@ const Header = () => {
           <StarIcon style={{ fontSize: "22px" }} />
           <h6 className='my-auto text-md font-semibold'>Wishlist</h6>
         </li>
-        <li className='flex gap-1 items-center'>
+        <li
+          className='flex gap-1 items-center cursor-pointer'
+          onClick={handleLogout}
+        >
           <HttpsIcon style={{ fontSize: "22px" }} />
           <h6 className='my-auto text-md font-semibold'>Logout</h6>
         </li>

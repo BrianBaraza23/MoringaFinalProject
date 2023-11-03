@@ -95,4 +95,8 @@ input[type="radio"]:checked::before {
   .active-header{
     height: 90px;
   }
+
+  .auth-screen{
+    height: 100vh;
+  }
 }
