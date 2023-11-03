@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import StarIcon from "@mui/icons-material/Star";
 import HttpsIcon from "@mui/icons-material/Https";
 
 const Header = () => {
+  useEffect(() => {
+    window.addEventListener("scroll", function () {
+      const activeHeader = document.querySelector("#header");
+      activeHeader?.classList.toggle("hide-header", window.scrollY > 100);
+      activeHeader?.classList.toggle("active-header", window.scrollY > 180);
+    });
+
+    return () => {
+      // Remove the scroll event listener when the component unmounts
+      window.removeEventListener("scroll", function () {});
+    };
+  }, []);
   return (
-    <div className='bg-default-gold flex flex-wrap items-center md:justify-between py-2 px-4 md:px-12 border-bottom'>
+    <div
+      className='bg-default-gold flex flex-wrap items-center md:justify-between py-2 px-4 md:px-12 border-bottom'
+      id='header'
+    >
       <div className='w-full md:w-auto flex gap-2 items-center justify-between md:justify-start'>
         <Link to='/' className='flex items-center gap-1'>
           <i

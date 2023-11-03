@@ -24,6 +24,23 @@
   background-color: #F1BB1B;
 }
 
+.hide-header{
+  height: 0;
+  opacity: 0;
+}
+
+ .active-header {
+   position: fixed;
+   height: 60px;
+   top: 0;
+   right: 0;
+   left: 0;
+   z-index: 999;
+   opacity: 1;
+   transition: height 0.6s ease-out;
+  transition: opacity 0.6s ease-out;
+ }
+
 .auth-screen{
   height: calc(100vh - 56px);
 }
@@ -72,3 +89,10 @@ input[type="radio"]:checked::before {
 
 
 /* Article Page */
+
+
+@media (max-width: 768px){
+  .active-header{
+    height: 90px;
+  }
+}
