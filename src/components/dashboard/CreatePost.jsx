@@ -2,7 +2,7 @@ import React from "react";
 
 const CreatePost = () => {
   return (
-    <div className='bg-white p-4 shadow-sm mx-2 mt-4'>
+    <div className='bg-white p-4 card mx-2 mt-4'>
       <div className='flex items-center gap-3 mt-3'>
         <div className='w-4 h-4 rounded-full bg-red-900 flex justify-center items-center'></div>
         <h6 className='text-red-900 my-auto text-xl'>Post Content</h6>

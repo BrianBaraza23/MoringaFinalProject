@@ -2,7 +2,7 @@ import React from "react";
 
 const CategorySection = () => {
   return (
-    <div className='bg-white p-4 shadow-sm mx-2 mt-4'>
+    <div className='bg-white p-4 card mx-2 mt-4'>
       <div className='flex items-center gap-3'>
         <div className='w-8 h-8 rounded-full bg-default-gold flex justify-center items-center'>
           <i className='fa fa-calendar' aria-hidden='true'></i>

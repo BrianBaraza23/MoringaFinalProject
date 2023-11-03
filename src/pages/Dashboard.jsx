@@ -19,7 +19,7 @@ const Dashboard = () => {
         <div className='flex flex-col flex-1 overflow-y-auto overflow-x-hidden'>
           <TopBar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
           <main>
-            <div className='px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto'>
+            <div className='px-1 md:px-12 py-8 w-full max-w-9xl mx-auto'>
               <ProfileSection />
               <CategorySection />
               <UsersList />
