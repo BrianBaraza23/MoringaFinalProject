@@ -39,12 +39,12 @@
 }
 
 /* Radio buttons */
-.categories input[type="radio"]:checked {
+input[type="radio"]:checked {
   border-color: #F1BB1B;
   /* Change border color to blue when checked */
 }
 
-.categories input[type="radio"]:checked::before {
+input[type="radio"]:checked::before {
   content: "";
   /* This is used to create the dot inside the radio button */
   display: block;
@@ -68,3 +68,7 @@
     background-color: #F1BB1B;
 }
 /* Radio buttons */
+/* Article Page */
+
+
+/* Article Page */

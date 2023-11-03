@@ -13,11 +13,16 @@ const ArticleCard = ({ is_new_article, is_wishlist }) => {
       <div className='card-body'>
         <div className='flex justify-between text-slate-300 text-md'>
           <div className='flex gap-1 items-center'>
-            <AccountCircleOutlinedIcon style={{ fontSize: "24px" }} />
-            <h6 className='my-auto'>John Doe</h6>
+            <AccountCircleOutlinedIcon style={{ fontSize: "18px" }} />
+            <h6 className='my-auto text-sm'>John Doe</h6>
           </div>
-          <div>
-            <h6 className='my-auto'>1st Nov 2023</h6>
+          <div className='flex gap-1 items-center'>
+            <i
+              className='fa fa-clock-o'
+              aria-hidden='true'
+              style={{ fontSize: "14px" }}
+            ></i>
+            <h6 className='my-auto text-sm'>1st Nov 2023</h6>
           </div>
         </div>
         <h5 className='text-default-green font-semibold py-2'>
