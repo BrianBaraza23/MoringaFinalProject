@@ -9,13 +9,8 @@ const CreatePost = () => {
   const { categories } = category;
 
   const article = useSelector((state) => state.article);
-  const { loading, error, success_create } = article;
+  const { loading, success_create } = article;
 
-  // title = data.get('title')
-  //   description = data.get('description')
-  //   category_id = data.get('category_id')
-  //   user_id = data.get('user_id')
-  //   media_url = data.get('media_url')
   const [articleInfo, setArticleInfo] = useState({
     title: "",
     description: "",
