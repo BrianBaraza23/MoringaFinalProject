@@ -23,11 +23,29 @@ export const categorySlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    listCategoriesStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    listCategoriesSuccess: (state, action) => {
+      state.loading = false;
+      state.categories = action.payload;
+    },
+    listCategoriesFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addCategoryStart, addCategorySuccess, addCategoryFail } =
-  categorySlice.actions;
+export const {
+  addCategoryStart,
+  addCategorySuccess,
+  addCategoryFail,
+  listCategoriesFail,
+  listCategoriesStart,
+  listCategoriesSuccess,
+} = categorySlice.actions;
 
 export default categorySlice.reducer;
