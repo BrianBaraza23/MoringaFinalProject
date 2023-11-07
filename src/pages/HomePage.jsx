@@ -6,8 +6,11 @@ import TrendingMedia from "../components/TrendingMedia";
 import VideoSlider from "../components/VideoSlider";
 import ArticlesSection from "../components/ArticlesSection";
 import Footer from "../components/Footer";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
+  const article = useSelector((state) => state.article);
+  const { articles } = article;
   return (
     <>
       <Header />
@@ -15,7 +18,7 @@ const HomePage = () => {
       <NewPostSection />
       <TrendingMedia />
       <VideoSlider />
-      <ArticlesSection section_color='bg-white' />
+      <ArticlesSection section_color='bg-white' articles={articles} />
       <Footer />
     </>
   );

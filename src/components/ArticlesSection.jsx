@@ -2,7 +2,7 @@ import React from "react";
 import ArticleCard from "./ArticleCard";
 import BrushIcon from "@mui/icons-material/Brush";
 
-const ArticlesSection = ({ section_color }) => {
+const ArticlesSection = ({ articles, section_color }) => {
   return (
     <div className={`${section_color} py-12 px-2 md:px-12`}>
       <div className='flex gap-3 items-center my-3'>
@@ -20,18 +20,13 @@ const ArticlesSection = ({ section_color }) => {
         </h5>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 flex justify-center'>
-        <div className='col-span-1 p-2'>
-          <ArticleCard />
-        </div>
-        <div className='col-span-1 p-2'>
-          <ArticleCard />
-        </div>
-        <div className='col-span-1 p-2'>
-          <ArticleCard />
-        </div>
-        <div className='col-span-1 p-2'>
-          <ArticleCard />
-        </div>
+        {articles?.map((article) => {
+          return (
+            <div className='col-span-1 p-2' key={article.content_id}>
+              <ArticleCard article={article} />
+            </div>
+          );
+        })}
       </div>
       <div className='w-full flex justify-center my-2'>
         <button className='bg-teal-800 px-4 text-white rounded py-2 shadow-lg'>
