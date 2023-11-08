@@ -3,9 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import StarIcon from "@mui/icons-material/Star";
 import HttpsIcon from "@mui/icons-material/Https";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
+
+  const wishlist = useSelector((state) => state.wishlist);
+  const { wishlistItems } = wishlist;
+
   useEffect(() => {
     window.addEventListener("scroll", function () {
       const activeHeader = document.querySelector("#header");
@@ -47,7 +52,14 @@ const Header = () => {
           </Link>
         </li>
         <li className='flex gap-1 items-center'>
-          <StarIcon style={{ fontSize: "22px" }} />
+          <div className='w-8 h-8 rounded-full flex items-center justify-center bg-slate-200 relative'>
+            <StarIcon style={{ fontSize: "22px" }} />
+            {wishlistItems.length > 0 && (
+              <span className='absolute top-0 right-0 w-4 h-4 rounded-full flex items-center justify-center bg-red-500 text-white text-sm'>
+                {wishlistItems.length}
+              </span>
+            )}
+          </div>
           <h6 className='my-auto text-md font-semibold'>Wishlist</h6>
         </li>
         <li

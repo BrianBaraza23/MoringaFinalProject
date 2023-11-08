@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listCategories } from "../../redux/actions/categoryActions";
 import { addUserCategory } from "../../redux/slices/categorySlices";
@@ -10,10 +10,6 @@ const CategorySection = () => {
   const { success_create, categories, userCategories } = category;
 
   const handleInputChange = (category_id) => {
-    // setCheckedCategories({
-    //   ...checkedCategories,
-    //   [category_id]: !checkedCategories[category_id],
-    // });
     dispatch(
       addUserCategory({
         name: category_id,
@@ -23,8 +19,6 @@ const CategorySection = () => {
   };
 
   const handleSaveCategories = () => {};
-
-  console.log(userCategories);
 
   useEffect(() => {
     dispatch(listCategories());
@@ -46,7 +40,6 @@ const CategorySection = () => {
       <div className='grid grid-cols-1 md:grid-cols-3 categories'>
         {categories.map((category) => {
           const { category_id, name } = category;
-          console.log(userCategories);
           const isChecked = userCategories[category_id] || false;
           return (
             <div className='col-span-1 flex gap-2 m-2' key={category_id}>

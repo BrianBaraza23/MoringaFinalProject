@@ -1,19 +1,125 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { useParams } from "react-router";
-import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  createComment,
+  getAverageRating,
+  listComments,
+  rateArticle,
+} from "../redux/actions/commentActions";
+import { addArticleControls } from "../redux/slices/articleSlices";
+import { removeArticle } from "../redux/actions/articleActions";
+import {
+  addItemToWishList,
+  removeItemFromWishlist,
+} from "../redux/actions/wishlistActions";
+import { Link } from "react-router-dom";
 
 const Article = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const params = useParams();
   const articleId = Number(params.id);
 
   const article = useSelector((state) => state.article);
-  const { articles } = article;
+  const { articles, controls, success_remove } = article;
 
   const currentArticle = articles?.find(
     (article) => article.content_id === articleId
   );
+
+  const [comment, setComment] = useState("");
+
+  const commentState = useSelector((state) => state.comment);
+  const { success_create, success_rating, comments, loading } = commentState;
+
+  const [relatedArticles, setRelatedArticles] = useState([]);
+
+  const content_id = currentArticle?.content_id;
+
+  const handleControlsChange = (e) => {
+    let { name } = e.target;
+    name = name + content_id;
+    dispatch(
+      addArticleControls({
+        name,
+        value: !controls[name],
+      })
+    );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (comment !== "") {
+      dispatch(
+        createComment({
+          content_id: currentArticle?.content_id,
+          user_id: 1,
+          text: comment,
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (success_create) {
+      setComment("");
+      dispatch(listComments(currentArticle?.content_id));
+    }
+  }, [dispatch, success_create, currentArticle]);
+
+  useEffect(() => {
+    dispatch(listComments(currentArticle?.content_id));
+  }, [dispatch, currentArticle]);
+
+  const handleRating = (e) => {
+    const rating_val = e.target.value;
+    if (rating_val !== "none") {
+      dispatch(
+        rateArticle({
+          content_id: currentArticle?.content_id,
+          rating_value: Number(e.target.value),
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (success_rating) {
+      dispatch(getAverageRating(currentArticle.content_id));
+    }
+  }, [success_rating, currentArticle, dispatch]);
+
+  const removeName = "remove" + content_id;
+  const wishlistName = "wishlist" + content_id;
+  const flagName = "flag" + content_id;
+
+  useEffect(() => {
+    if (controls[removeName]) {
+      dispatch(removeArticle(currentArticle?.content_id));
+    } else if (controls[wishlistName]) {
+      dispatch(addItemToWishList(currentArticle?.content_id));
+    } else if (!controls[wishlistName]) {
+      dispatch(removeItemFromWishlist(currentArticle?.content_id));
+    }
+  }, [controls, dispatch, currentArticle, removeName, wishlistName]);
+
+  useEffect(() => {
+    if (success_remove) {
+      navigate("/");
+    }
+  }, [success_create, navigate, success_remove]);
+
+  useEffect(() => {
+    const relatedArticles = articles.filter(
+      (article) =>
+        article.category_id === currentArticle?.category_id &&
+        article.content_id !== currentArticle?.content_id
+    );
+    setRelatedArticles(relatedArticles);
+  }, [articles, currentArticle]);
 
   return (
     <section className='article-sect'>
@@ -34,21 +140,18 @@ const Article = () => {
             Related Articles
           </h4>
           <ul className='text-gray-400 text-md list-inside list-disc'>
-            <li className='border-top py-2 border-amber-400 text-amber-400'>
-              Computers will steal your job
-            </li>
-            <li className='border-top py-2 border-amber-400 w-full text-amber-400'>
-              300 days of code challenge
-            </li>
-            <li className='border-top py-2 border-amber-400 w-full text-amber-400'>
-              Shut down to save energy
-            </li>
-            <li className='border-top py-2 border-amber-400 w-full text-amber-400'>
-              Code for sustainable future
-            </li>
-            <li className='border-top py-2 border-amber-400 w-full text-amber-400'>
-              Kenya's Best Programmers
-            </li>
+            {relatedArticles?.map((article) => {
+              return (
+                <li
+                  className='border-top py-2 border-amber-400 text-amber-400'
+                  key={article.content_id}
+                >
+                  <Link to={`/articles/${article.content_id}`}>
+                    {article.title.slice(0, 30)}...
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
@@ -95,14 +198,28 @@ const Article = () => {
             </button>
           </div>
           <h5 className='text-amber-400 text-xl'>Add Comment</h5>
+          {loading && <p>loading...</p>}
           <textarea
             rows={3}
             className='w-full md:w-3/5 border focus:outline-none text-gray-700 py-1 px-2 rounded mt-3'
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
           ></textarea>
+          {comments?.map((comment) => {
+            return (
+              <p className='alert alert-success text-gray-700'>
+                {comment.text}
+              </p>
+            );
+          })}
           <div className='w-full md:w-3/5 h-16 flex items-end'>
             <div className='w-3/5'>
               <h6 className='text-amber-400 text-md py-1'>Rate the article</h6>
-              <select className='w-full border focus:outline-none px-3 py-1 text-gray-700 text-md italic rounded'>
+              <select
+                className='w-full border focus:outline-none px-3 py-1 text-gray-700 text-md italic rounded'
+                onChange={handleRating}
+              >
+                <option value='none'>-- Rate the article --</option>
                 <option value='5'>5 - Very Good</option>
                 <option value='4'>4 - Good</option>
                 <option value='3'>3 - Average</option>
@@ -110,7 +227,10 @@ const Article = () => {
                 <option value='1'>1 - Very Poor</option>
               </select>
             </div>
-            <button className='w-2/5 bg-default-gold  ml-1  text-md rounded py-1 text-white cursor-pointer'>
+            <button
+              className='w-2/5 bg-default-gold  ml-1  text-md rounded py-1 text-white cursor-pointer'
+              onClick={handleSubmit}
+            >
               Submit
             </button>
           </div>
@@ -146,19 +266,38 @@ const Article = () => {
             </div>
           </div>
           <div className='border border-amber-400 border-2 px-8 md:mt-5 py-3'>
-            <h6 className='text-amber-400 text-md mb-1'>
-              Administrator Controls
-            </h6>
+            <h6 className='text-amber-400 text-md mb-1'>Controls</h6>
             <div className='mt-2 flex gap-3'>
-              <input type='radio' className='w-5 h-5' />
+              <input
+                type='checkbox'
+                name='wishlist'
+                value={currentArticle?.content_id}
+                checked={controls[wishlistName] || false}
+                onChange={handleControlsChange}
+                className='w-5 h-5'
+              />
               <h6 className='my-auto text-gray-600 text-md'>Add to wishlist</h6>
             </div>
             <div className='mt-2 flex gap-3'>
-              <input type='radio' className='w-5 h-5' />
+              <input
+                type='checkbox'
+                className='w-5 h-5'
+                name='flag'
+                value={currentArticle?.content_id}
+                checked={controls[flagName] || false}
+                onChange={handleControlsChange}
+              />
               <h6 className='my-auto text-gray-600 text-md'>Flag</h6>
             </div>
             <div className='mt-2 flex gap-3'>
-              <input type='radio' className='w-5 h-5' />
+              <input
+                type='checkbox'
+                className='w-5 h-5'
+                name='remove'
+                value={currentArticle?.content_id}
+                checked={controls[removeName] || false}
+                onChange={handleControlsChange}
+              />
               <h6 className='my-auto text-gray-600 text-md'>Remove</h6>
             </div>
           </div>

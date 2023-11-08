@@ -1,16 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const localStorageControls = localStorage.getItem("controls")
+  ? JSON.parse(localStorage.getItem("controls"))
+  : {};
+
 const initialState = {
   loading: false,
   error: null,
   articles: [],
   success_create: false,
+  success_remove: false,
+  controls: localStorageControls,
 };
 
 export const articleSlice = createSlice({
   name: "article",
   initialState,
   reducers: {
+    addArticleControls: (state, action) => {
+      const { name, value } = action.payload;
+      state.controls = {
+        ...state.controls,
+        [name]: value,
+      };
+
+      localStorage.setItem("controls", JSON.stringify(state.controls));
+    },
     createArticleStart: (state) => {
       state.loading = true;
       state.success_create = false;
@@ -35,6 +50,18 @@ export const articleSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    removeArticleStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    removeArticleSuccess: (state, action) => {
+      state.loading = false;
+      state.success_remove = true;
+    },
+    removeArticleFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -46,6 +73,10 @@ export const {
   listArticlesStart,
   listArticlesSuccess,
   listArticlesFail,
+  addArticleControls,
+  removeArticleStart,
+  removeArticleSuccess,
+  removeArticleFail,
 } = articleSlice.actions;
 
 export default articleSlice.reducer;

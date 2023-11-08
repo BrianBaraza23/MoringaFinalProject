@@ -5,6 +5,9 @@ import {
   listArticlesStart,
   listArticlesSuccess,
   listArticlesFail,
+  removeArticleStart,
+  removeArticleSuccess,
+  removeArticleFail,
 } from "../slices/articleSlices";
 import axios from "axios";
 import { BASE_URL } from "../../URL";
@@ -57,5 +60,26 @@ export const listArticles = () => async (dispatch, getState) => {
     dispatch(listArticlesSuccess(filteredArticles));
   } catch (err) {
     dispatch(listArticlesFail("Error listing articles"));
+  }
+};
+
+// ADMIN REMOVE ARTICLE
+export const removeArticle = (contentId) => async (dispatch) => {
+  try {
+    dispatch(removeArticleStart());
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.post(
+      `${BASE_URL}/content/delete-approved/${contentId}`,
+      config
+    );
+    dispatch(removeArticleSuccess(data));
+  } catch (err) {
+    dispatch(removeArticleFail("Error deleting article"));
   }
 };
