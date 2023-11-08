@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createCategory } from "../../redux/actions/categoryActions";
 
 const CreateCategory = () => {
   const dispatch = useDispatch();
   const category = useSelector((state) => state.category);
-  const { loading } = category;
+  const { loading, success_create } = category;
 
   const [categoryName, setCategoryName] = useState("");
 
@@ -19,6 +19,12 @@ const CreateCategory = () => {
       dispatch(createCategory({ name: categoryName }));
     }
   };
+
+  useEffect(() => {
+    if (success_create) {
+      setCategoryName("");
+    }
+  }, [success_create]);
   return (
     <div className='bg-white p-4 card mx-2 mt-4'>
       <div className='flex items-center gap-3 mt-3'>

@@ -45,16 +45,15 @@ export const listArticles = () => async (dispatch, getState) => {
     const keys = Object.keys(userCategories);
     let categories = [];
     for (const key of keys) {
-      categories.push(key);
+      if (userCategories[key]) {
+        categories.push(key);
+      }
     }
-    let filteredArticles = data;
 
-    if (categories.length > 1) {
-      filteredArticles = data.filter((item) => {
-        // Convert content_id to a string and check if it's included in categories
-        return categories.includes(item.category_id.toString());
-      });
-    }
+    const filteredArticles = data.filter((item) => {
+      // Convert content_id to a string and check if it's included in categories
+      return categories.includes(item.category_id.toString());
+    });
     dispatch(listArticlesSuccess(filteredArticles));
   } catch (err) {
     dispatch(listArticlesFail("Error listing articles"));
