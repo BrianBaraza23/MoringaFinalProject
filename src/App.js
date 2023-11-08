@@ -12,9 +12,12 @@ function App() {
   const article = useSelector((state) => state.article);
   const { articles, success_create } = article;
 
+  const category = useSelector((state) => state.category);
+  const { userCategories } = category;
+
   useEffect(() => {
     dispatch(listArticles());
-  }, [dispatch, success_create]);
+  }, [dispatch, success_create, userCategories]);
 
   console.log(articles);
   return (

@@ -1,16 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const localStorageCat = localStorage.getItem("cat")
+  ? JSON.parse(localStorage.getItem("cat"))
+  : {};
+
 const initialState = {
   loading: false,
   error: null,
   categories: [],
   success_create: false,
+  userCategories: localStorageCat,
 };
 
 export const categorySlice = createSlice({
   name: "category",
   initialState,
   reducers: {
+    addUserCategory: (state, action) => {
+      const { name, value } = action.payload;
+      state.userCategories = {
+        ...state.userCategories,
+        [name]: value,
+      };
+
+      localStorage.setItem("cat", JSON.stringify(state.userCategories));
+    },
     addCategoryStart: (state) => {
       state.loading = true;
       state.success_create = false;
@@ -40,6 +54,7 @@ export const categorySlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
+  addUserCategory,
   addCategoryStart,
   addCategorySuccess,
   addCategoryFail,
